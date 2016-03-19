@@ -1,0 +1,18 @@
+{
+    "name": "thangman22/GoogleCloudVision",
+    "type": "vcs",
+    "authors": [
+        {
+            "name": "Warat Wongmaneekit",
+            "email": "canopybanj@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "GoogleCloudVisionPHP\\": "src"
+      }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
