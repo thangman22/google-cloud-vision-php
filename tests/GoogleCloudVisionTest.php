@@ -6,7 +6,7 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
 
     protected $gcv;
 
-    protected $filePath = __DIR__.'/./dog.jpg';
+    protected $filePath = 'tests/dog.jpg';
 
     protected function setUp()
     {
