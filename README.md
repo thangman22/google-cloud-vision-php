@@ -44,6 +44,9 @@ $gcv->addFeatureOCR(1);
 $gcv->addFeatureSafeSeachDetection(1);
 $gcv->addFeatureImageProperty(1);
 
+//Optinal
+$gcv->setImageContext(array("languageHints"=>array("th")));
+
 $response = $this->gcv->request();
 
 ```
