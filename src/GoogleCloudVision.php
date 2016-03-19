@@ -1,6 +1,8 @@
 <?php
 namespace GoogleCloudVisionPHP;
+
 use Exception;
+
 class GoogleCloudVision
 {
     private $features = array();
@@ -19,7 +21,7 @@ class GoogleCloudVision
 
     public function setImage($path, $type = "FILE")
     {
-        if(empty($path)){
+        if (empty($path)) {
             throw new Exception("Path valiable is empty.", 1);
         }
         if ($type == "GSC") {
@@ -52,67 +54,78 @@ class GoogleCloudVision
 
     public function addFeature($type, $maxResults = 1)
     {
-        if(empty($type)){
+        if (empty($type)) {
             throw new Exception("Type valiable is empty.", 1);
         }
 
-        if(!is_numeric($maxResults)){
+        if (!is_numeric($maxResults)) {
             throw new Exception("maxResults valiable is not valid it should be Integer.", 1);
         }
 
-        $this->features[] = array("type" => $type,"maxResults" => $maxResults);
+        $this->features[] = array("type" => $type, "maxResults" => $maxResults);
         return $this->setRequestBody();
     }
 
     public function setImageContext($imageContext)
     {
-        if(empty($imageContext) && !is_array($imageContext)){
+        if (empty($imageContext) && !is_array($imageContext)) {
             throw new Exception("imageContext valiable is not valid it should be Array.", 1);
         }
         $this->imageContext = $imageContext;
         return $this->setRequestBody();
     }
 
-    public function addFeatureUnspecified($maxResults){
+    public function addFeatureUnspecified($maxResults)
+    {
         return $this->addFeature("TYPE_UNSPECIFIED", $maxResults);
     }
-    public function addFeatureFaceDetection($maxResults){
+    public function addFeatureFaceDetection($maxResults)
+    {
         return $this->addFeature("FACE_DETECTION", $maxResults);
     }
-    public function addFeatureLandmarkDetection($maxResults){
+    public function addFeatureLandmarkDetection($maxResults)
+    {
         return $this->addFeature("LANDMARK_DETECTION", $maxResults);
     }
-    public function addFeatureLogoDetection($maxResults){
+    public function addFeatureLogoDetection($maxResults)
+    {
         return $this->addFeature("LOGO_DETECTION", $maxResults);
     }
-    public function addFeatureLabelDetection($maxResults){
+    public function addFeatureLabelDetection($maxResults)
+    {
         return $this->addFeature("LABEL_DETECTION", $maxResults);
     }
-    public function addFeatureOCR($maxResults){
+    public function addFeatureOCR($maxResults)
+    {
         return $this->addFeature("TEXT_DETECTION", $maxResults);
     }
-    public function addFeatureSafeSeachDetection($maxResults){
+    public function addFeatureSafeSeachDetection($maxResults)
+    {
         return $this->addFeature("SAFE_SEARCH_DETECTION", $maxResults);
     }
-    public function addFeatureImageProperty($maxResults){
+    public function addFeatureImageProperty($maxResults)
+    {
         return $this->addFeature("IMAGE_PROPERTIES", $maxResults);
     }
 
-    public function request($endpoint = "annotate"){
-        if(empty($this->key)){
+    public function request($endpoint = "annotate")
+    {
+        if (empty($this->key)) {
             throw new Exception("API Key is empty Please grant from https://console.cloud.google.com/apis/credentials", 1);
         }
-        if($endpoint == "annotate"){
-            $url  = $this->urlEnpoint.$this->version."/images:annotate?key=".$this->key;
+        if ($endpoint == "annotate") {
+            $url = $this->urlEnpoint . $this->version . "/images:annotate?key=" . $this->key;
         }
-        return $this->requestServer($url,$this->requestBody);
+        return $this->requestServer($url, $this->requestBody);
     }
 
-    public function setKey($key){
+    public function setKey($key)
+    {
         $this->key = $key;
     }
 
-    private function requestServer($url,$data){
+    private function requestServer($url, $data)
+    {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
