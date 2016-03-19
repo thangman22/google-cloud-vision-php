@@ -22,7 +22,7 @@ Add this to your composer.json
 ```
 
 ##Example
-```
+```php
 $gcv = new GoogleCloudVision();
 
 // Follow instruction from Google Cloud Vision Document
