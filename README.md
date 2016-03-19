@@ -22,5 +22,27 @@ Add this to your composer.json
 ```
 
 ##Example
+```
+$gcv = new GoogleCloudVision();
 
+// Follow instruction from Google Cloud Vision Document
+$gcv->setKey("[Key from Google]");
+
+$gcv->setImage("[File path]");
+
+// 1 is Max result
+$gcv->addFeature("LABEL_DETECTION", 1);
+
+$gcv->addFeatureUnspecified(1);
+$gcv->addFeatureFaceDetection(1);
+$gcv->addFeatureLandmarkDetection(1);
+$gcv->addFeatureLogoDetection(1);
+$gcv->addFeatureLabelDetection(1);
+$gcv->addFeatureOCR(1);
+$gcv->addFeatureSafeSeachDetection(1);
+$gcv->addFeatureImageProperty(1);
+
+$response = $this->gcv->request();
+
+```
 
