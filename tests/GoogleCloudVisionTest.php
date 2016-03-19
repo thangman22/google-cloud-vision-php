@@ -41,6 +41,41 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
         $request = $this->gcv->setImageContext(array("languageHints"=>array("th","en")));
         $this->assertEquals($request['requests'][0]['imageContext']['languageHints'][0],"th");
     }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testSetImageException()
+    {
+        $request = $this->gcv->addFeature("dddd","dddd");
+    }
+    /**
+     * @expectedException Exception
+     */
+    public function testSetImageContextException()
+    {
+        $request = $this->gcv->setImageContext("dddd");
+    }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testRequestWithoutKey()
+    {
+        $this->gcv->setImage($this->filePath);
+        $this->gcv->addFeature("LABEL_DETECTION", 1);
+        $response = $this->gcv->request();
+    }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testRequestWithoutData()
+    {
+        $this->gcv->setKey(getenv('GCV_KEY'));
+        $response = $this->gcv->request();
+    }
+
     //Integration Test
     public function testRequest()
     {

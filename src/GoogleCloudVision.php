@@ -21,9 +21,6 @@ class GoogleCloudVision
 
     public function setImage($path, $type = "FILE")
     {
-        if (empty($path)) {
-            throw new Exception("Path valiable is empty.", 1);
-        }
         if ($type == "GSC") {
             $this->image['source']['gcs_image_uri'] = $path;
         } elseif ($type == "FILE") {
@@ -54,9 +51,6 @@ class GoogleCloudVision
 
     public function addFeature($type, $maxResults = 1)
     {
-        if (empty($type)) {
-            throw new Exception("Type valiable is empty.", 1);
-        }
 
         if (!is_numeric($maxResults)) {
             throw new Exception("maxResults valiable is not valid it should be Integer.", 1);
@@ -68,7 +62,7 @@ class GoogleCloudVision
 
     public function setImageContext($imageContext)
     {
-        if (empty($imageContext) && !is_array($imageContext)) {
+        if (!is_array($imageContext)) {
             throw new Exception("imageContext valiable is not valid it should be Array.", 1);
         }
         $this->imageContext = $imageContext;
