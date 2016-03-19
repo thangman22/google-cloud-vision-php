@@ -75,37 +75,37 @@ class GoogleCloudVision
         return $this->setRequestBody();
     }
 
-    public function addFeatureUnspecified($maxResults)
+    public function addFeatureUnspecified($maxResults = 1)
     {
-        return $this->addFeature("TYPE_UNSPECIFIED", $maxResults);
+        return $this->addFeature("TYPE_UNSPECIFIED", $maxResults = 1);
     }
-    public function addFeatureFaceDetection($maxResults)
+    public function addFeatureFaceDetection($maxResults = 1)
     {
-        return $this->addFeature("FACE_DETECTION", $maxResults);
+        return $this->addFeature("FACE_DETECTION", $maxResults = 1);
     }
-    public function addFeatureLandmarkDetection($maxResults)
+    public function addFeatureLandmarkDetection($maxResults = 1)
     {
-        return $this->addFeature("LANDMARK_DETECTION", $maxResults);
+        return $this->addFeature("LANDMARK_DETECTION", $maxResults = 1);
     }
-    public function addFeatureLogoDetection($maxResults)
+    public function addFeatureLogoDetection($maxResults = 1)
     {
-        return $this->addFeature("LOGO_DETECTION", $maxResults);
+        return $this->addFeature("LOGO_DETECTION", $maxResults = 1);
     }
-    public function addFeatureLabelDetection($maxResults)
+    public function addFeatureLabelDetection($maxResults = 1)
     {
-        return $this->addFeature("LABEL_DETECTION", $maxResults);
+        return $this->addFeature("LABEL_DETECTION", $maxResults = 1);
     }
-    public function addFeatureOCR($maxResults)
+    public function addFeatureOCR($maxResults = 1)
     {
-        return $this->addFeature("TEXT_DETECTION", $maxResults);
+        return $this->addFeature("TEXT_DETECTION", $maxResults = 1);
     }
-    public function addFeatureSafeSeachDetection($maxResults)
+    public function addFeatureSafeSeachDetection($maxResults = 1)
     {
-        return $this->addFeature("SAFE_SEARCH_DETECTION", $maxResults);
+        return $this->addFeature("SAFE_SEARCH_DETECTION", $maxResults = 1);
     }
-    public function addFeatureImageProperty($maxResults)
+    public function addFeatureImageProperty($maxResults = 1)
     {
-        return $this->addFeature("IMAGE_PROPERTIES", $maxResults);
+        return $this->addFeature("IMAGE_PROPERTIES", $maxResults = 1);
     }
 
     public function request($endpoint = "annotate")
