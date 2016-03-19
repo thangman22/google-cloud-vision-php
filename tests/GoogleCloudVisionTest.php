@@ -41,7 +41,7 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
         $request = $this->gcv->setImageContext(array("languageHints"=>array("th","en")));
         $this->assertEquals($request['requests'][0]['imageContext']['languageHints'][0],"th");
     }
-
+    //Integration Test
     public function testRequest()
     {
         require_once __DIR__.'/./config.php';
@@ -49,6 +49,7 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
         $this->gcv->setImage($this->filePath);
         $this->gcv->addFeature("LABEL_DETECTION", 1);
 
-        var_dump($this->gcv->request());
+        $response = $this->gcv->request();
+        $this->assertNotNull($response['responses']);
     }
 }
