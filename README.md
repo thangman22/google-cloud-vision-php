@@ -17,7 +17,7 @@ Add this to your composer.json
 
 ```
 "require": {
-        "kbariotis/feedly-api": "dev-master"
+        "thangman22/google-cloud-vision-php": "*"
     }
 ```
 
