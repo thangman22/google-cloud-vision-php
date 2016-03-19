@@ -11,7 +11,9 @@ class GoogleCloudVision
 
     private $requestBody = array();
 
-    private $urlEnpoint = "https://vision.googleapis.com/v1/";
+    private $version = "v1";
+
+    private $urlEnpoint = "https://vision.googleapis.com/";
 
     private $key;
 
@@ -101,7 +103,7 @@ class GoogleCloudVision
             throw new Exception("API Key is empty Please grant from https://console.cloud.google.com/apis/credentials", 1);
         }
         if($endpoint == "annotate"){
-            $url  = $this->urlEnpoint."images:annotate?key=".$this->key;
+            $url  = $this->urlEnpoint.$this->version."/images:annotate?key=".$this->key;
         }
         return $this->requestServer($url,$this->requestBody);
     }
