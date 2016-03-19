@@ -1,2 +1,4 @@
 test/config.php
+examples/vendor
+examples/composer.lock
 .phpintel

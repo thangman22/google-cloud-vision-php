@@ -15,7 +15,7 @@ This project hosts the PHP library for the various RESTful based Google Cloud Vi
 ##Installation
 Add this to your composer.json
 
-```
+```json
 "require": {
         "thangman22/google-cloud-vision-php": "*"
     }
@@ -23,6 +23,8 @@ Add this to your composer.json
 
 ##Example
 ```php
+use GoogleCloudVisionPHP\GoogleCloudVision;
+
 $gcv = new GoogleCloudVision();
 
 // Follow instruction from Google Cloud Vision Document
