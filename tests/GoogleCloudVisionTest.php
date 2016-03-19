@@ -44,8 +44,8 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
     //Integration Test
     public function testRequest()
     {
-        require_once __DIR__.'/./config.php';
-        $this->gcv->setKey($config['key']);
+
+        $this->gcv->setKey(getenv('GCV_KEY'));
         $this->gcv->setImage($this->filePath);
         $this->gcv->addFeature("LABEL_DETECTION", 1);
 
