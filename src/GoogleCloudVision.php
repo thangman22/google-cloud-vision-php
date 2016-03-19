@@ -113,6 +113,15 @@ class GoogleCloudVision
         if (empty($this->key)) {
             throw new Exception("API Key is empty Please grant from https://console.cloud.google.com/apis/credentials", 1);
         }
+
+        if (empty($this->features)) {
+            throw new Exception("Features is can't empty.", 1);
+        }
+
+        if (empty($this->image)) {
+            throw new Exception("Images is can't empty.", 1);
+        }
+
         if ($endpoint == "annotate") {
             $url = $this->urlEnpoint . $this->version . "/images:annotate?key=" . $this->key;
         }
