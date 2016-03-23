@@ -5,26 +5,28 @@ use Exception;
 
 class GoogleCloudVision
 {
-    private $features = array();
+    protected $features = array();
 
-    private $imageContext = array();
+    protected $imageContext = array();
 
-    private $image = array();
+    protected $image = array();
 
-    private $requestBody = array();
+    protected $requestBody = array();
 
-    private $version = "v1";
+    protected $version = "v1";
 
-    private $urlEnpoint = "https://vision.googleapis.com/";
+    protected $urlEnpoint = "https://vision.googleapis.com/";
 
-    private $key;
+    protected $key;
 
-    public function setImage($path, $type = "FILE")
+    public function setImage($input, $type = "FILE")
     {
         if ($type == "GSC") {
-            $this->image['source']['gcs_image_uri'] = $path;
+            $this->image['source']['gcs_image_uri'] = $input;
         } elseif ($type == "FILE") {
-            $this->image['content'] = $this->convertImgtoBased64($path);
+            $this->image['content'] = $this->convertImgtoBased64($input);
+        } elseif($type == "RAW") {
+            $this->image['content'] = base64_encode($input);
         }
         return $this->setRequestBody();
     }
@@ -35,7 +37,7 @@ class GoogleCloudVision
         return base64_encode($data);
     }
 
-    private function setRequestBody()
+    protected function setRequestBody()
     {
         if (!empty($this->image)) {
             $this->requestBody['requests'][0]['image'] = $this->image;
@@ -127,7 +129,7 @@ class GoogleCloudVision
         $this->key = $key;
     }
 
-    private function requestServer($url, $data)
+    protected function requestServer($url, $data)
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
