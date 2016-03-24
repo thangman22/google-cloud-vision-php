@@ -6,10 +6,11 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
 
     protected $gcv;
 
-    protected $filePath = 'tests/dog.jpg';
+    protected $filePath;
 
     protected function setUp()
     {
+        $this->filePath = realpath(__DIR__.'/dog.jpg');
         $this->gcv = new GoogleCloudVision();
     }
     public function testConvertImgtoBased64()
@@ -22,6 +23,12 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
     {
         $request = $this->gcv->setImage($this->filePath);
         $this->assertNotNull($request['requests'][0]['image']['content']);
+    }
+
+    public function testSetRawImage()
+    {
+        $request = $this->gcv->setImage(file_get_contents($this->filePath),'RAW');
+        $this->assertEquals(30420,strlen($request['requests'][0]['image']['content']));
     }
 
     public function testSetImageWithGsc()
