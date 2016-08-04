@@ -3,7 +3,7 @@ require_once "vendor/autoload.php";
 
 use GoogleCloudVisionPHP\GoogleCloudVision;
 // Add your key
-$key = "";
+$key = "AIzaSyBzZsOM84kf4oU9DHLoZCrQec44EbXTgR4";
 ?>
 <h1>Face Detection</h1>
 <img src="images/brady.png" alt="" height="200">
