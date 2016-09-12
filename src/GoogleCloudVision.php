@@ -73,35 +73,35 @@ class GoogleCloudVision
 
     public function addFeatureUnspecified($maxResults = 1)
     {
-        return $this->addFeature("TYPE_UNSPECIFIED", $maxResults = 1);
+        return $this->addFeature("TYPE_UNSPECIFIED", $maxResults);
     }
     public function addFeatureFaceDetection($maxResults = 1)
     {
-        return $this->addFeature("FACE_DETECTION", $maxResults = 1);
+        return $this->addFeature("FACE_DETECTION", $maxResults);
     }
     public function addFeatureLandmarkDetection($maxResults = 1)
     {
-        return $this->addFeature("LANDMARK_DETECTION", $maxResults = 1);
+        return $this->addFeature("LANDMARK_DETECTION", $maxResults);
     }
     public function addFeatureLogoDetection($maxResults = 1)
     {
-        return $this->addFeature("LOGO_DETECTION", $maxResults = 1);
+        return $this->addFeature("LOGO_DETECTION", $maxResults);
     }
     public function addFeatureLabelDetection($maxResults = 1)
     {
-        return $this->addFeature("LABEL_DETECTION", $maxResults = 1);
+        return $this->addFeature("LABEL_DETECTION", $maxResults);
     }
     public function addFeatureOCR($maxResults = 1)
     {
-        return $this->addFeature("TEXT_DETECTION", $maxResults = 1);
+        return $this->addFeature("TEXT_DETECTION", $maxResults);
     }
     public function addFeatureSafeSeachDetection($maxResults = 1)
     {
-        return $this->addFeature("SAFE_SEARCH_DETECTION", $maxResults = 1);
+        return $this->addFeature("SAFE_SEARCH_DETECTION", $maxResults);
     }
     public function addFeatureImageProperty($maxResults = 1)
     {
-        return $this->addFeature("IMAGE_PROPERTIES", $maxResults = 1);
+        return $this->addFeature("IMAGE_PROPERTIES", $maxResults);
     }
 
     public function request($endpoint = "annotate")
