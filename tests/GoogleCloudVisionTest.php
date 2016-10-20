@@ -1,11 +1,20 @@
 <?php
 use GoogleCloudVisionPHP\GoogleCloudVision;
 
+/**
+ * Class GoogleCloudVisionTest
+ * @covers GoogleCloudVisionPHP\GoogleCloudVision
+ */
 class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
 {
-
+    /**
+     * @var GoogleCloudVision
+     */
     protected $gcv;
 
+    /**
+     * @var string
+     */
     protected $filePath;
 
     protected function setUp()
@@ -13,6 +22,7 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
         $this->filePath = realpath(__DIR__.'/dog.jpg');
         $this->gcv = new GoogleCloudVision();
     }
+
     public function testConvertImgtoBased64()
     {
         $countbase64 = strlen($this->gcv->convertImgtoBased64($this->filePath));
@@ -86,7 +96,6 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
     //Integration Test
     public function testRequest()
     {
-
         $this->gcv->setKey(getenv('GCV_KEY'));
         $this->gcv->setImage($this->filePath);
         $this->gcv->addFeature("LABEL_DETECTION", 1);
