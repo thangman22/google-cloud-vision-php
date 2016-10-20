@@ -4,3 +4,4 @@ examples/composer.lock
 .phpintel
 .idea
 .git
+vendor/
