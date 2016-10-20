@@ -2,7 +2,6 @@
 namespace GoogleCloudVisionPHP;
 
 use Exception;
-use HttpException;
 
 /**
  * Class GoogleCloudVision
@@ -265,7 +264,7 @@ class GoogleCloudVision
      * @param $data
      *
      * @return array
-     * @throws \HttpException
+     * @throws Exception
      */
     protected function requestServer($url, $data)
     {
@@ -283,7 +282,7 @@ class GoogleCloudVision
         $errors = curl_error($ch);
 
         if ($errors !== null) {
-            throw new \HttpException($errors);
+            throw new Exception($errors);
         }
 
         return $res;
