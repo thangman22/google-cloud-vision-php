@@ -5,3 +5,4 @@ examples/composer.lock
 .idea
 .git
 vendor/
+composer.lock
