@@ -2,6 +2,7 @@
 namespace GoogleCloudVisionPHP;
 
 use Exception;
+use HttpException;
 
 /**
  * Class GoogleCloudVision
