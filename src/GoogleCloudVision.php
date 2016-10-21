@@ -281,7 +281,7 @@ class GoogleCloudVision
 
         $errors = curl_error($ch);
 
-        if ($errors !== null) {
+        if ($errors !== '') {
             throw new Exception($errors);
         }
 
