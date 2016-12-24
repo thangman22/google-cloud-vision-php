@@ -91,7 +91,7 @@ class GoogleCloudVision
         curl_setopt($ch, CURLOPT_HEADER, 0);
         $response = curl_exec($ch);
         curl_close($ch);
-        $base64 = 'data:image/' . $extension . ';base64,' . base64_encode($response);
+        $base64 = base64_encode($response);
         return $base64;
     }
 
