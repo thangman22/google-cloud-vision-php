@@ -33,8 +33,17 @@ class GoogleCloudVision
 
     public function convertImgtoBased64($path)
     {
-        $data = file_get_contents($path);
-        return base64_encode($data);
+        $urlParts = pathinfo($path);
+        $extension = $urlParts['extension'];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $path);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $base64 = 'data:image/' . $extension . ';base64,' . base64_encode($response);
+        return $base64;
     }
 
     protected function setRequestBody()
