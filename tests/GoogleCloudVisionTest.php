@@ -1,11 +1,20 @@
 <?php
 use GoogleCloudVisionPHP\GoogleCloudVision;
 
+/**
+ * Class GoogleCloudVisionTest
+ * @covers GoogleCloudVisionPHP\GoogleCloudVision
+ */
 class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
 {
-
+    /**
+     * @var GoogleCloudVision
+     */
     protected $gcv;
 
+    /**
+     * @var string
+     */
     protected $filePath;
 
     protected function setUp()
@@ -87,7 +96,6 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
     //Integration Test
     public function testRequest()
     {
-
         $this->gcv->setKey(getenv('GCV_KEY'));
         $this->gcv->setImage($this->filePath);
         $this->gcv->addFeature("LABEL_DETECTION", 1);
