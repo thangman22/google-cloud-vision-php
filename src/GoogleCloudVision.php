@@ -15,9 +15,13 @@ class GoogleCloudVision
 
     protected $version = "v1";
 
-    protected $urlEnpoint = "https://vision.googleapis.com/";
+    protected $endpoint = "https://vision.googleapis.com/";
 
     protected $key;
+
+    public function setEndpoint($newEndpoint) {
+        $this->endpoint = $newEndpoint;
+    }
 
     public function setImage($input, $type = "FILE")
     {
@@ -128,7 +132,7 @@ class GoogleCloudVision
         }
 
         if ($endpoint == "annotate") {
-            $url = $this->urlEnpoint . $this->version . "/images:annotate?key=" . $this->key;
+            $url = $this->endpoint . $this->version . "/images:annotate?key=" . $this->key;
         }
         return $this->requestServer($url, $this->requestBody);
     }
