@@ -1,5 +1,6 @@
 <?php
 use GoogleCloudVisionPHP\GoogleCloudVision;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class GoogleCloudVisionTest
