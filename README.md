@@ -1,6 +1,9 @@
-[![Build Status](https://travis-ci.org/thangman22/google-cloud-vision-php.svg?branch=master)](https://travis-ci.org/thangman22/google-cloud-vision-php)
+[![Build Status](https://travis-ci.org/pallant/google-cloud-vision-php.svg?branch=master)](https://travis-ci.org/pallant/google-cloud-vision-php)
+
 # GoogleCloudVisionPHP
 This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API] (https://cloud.google.com/vision/)
+
+This is a fork of http://github.com/thangman22/google-cloud-vision-php
 
 ##Features
 *   Support almost feature of Google Cloud Vision API (Version 1)
@@ -17,7 +20,7 @@ Add this to your composer.json
 
 ```json
 "require": {
-        "thangman22/google-cloud-vision-php": "*"
+        "pallant/google-cloud-vision-php": "*"
     }
 ```
 
