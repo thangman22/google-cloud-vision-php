@@ -1,6 +1,6 @@
 <?php
 use GoogleCloudVisionPHP\GoogleCloudVision;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\PHPUnit\Framework\TestCase;
 
 /**
  * Class GoogleCloudVisionTest
@@ -28,6 +28,7 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
     {
         $countbase64 = strlen($this->gcv->convertImgtoBased64($this->filePath));
         $this->assertEquals($countbase64, 41700);
+
     }
 
     public function testSetImageWithFile()
