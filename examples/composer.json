@@ -1,5 +1,5 @@
 {
     "require": {
-        "thangman22/google-cloud-vision-php": "^1.0"
+        "pallant/google-cloud-vision-php": "^1.0"
     }
 }

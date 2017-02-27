@@ -4,5 +4,6 @@ examples/composer.lock
 .phpintel
 .idea
 .git
+.tags
 vendor/
 composer.lock
