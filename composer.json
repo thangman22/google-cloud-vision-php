@@ -1,10 +1,14 @@
 {
-    "name": "thangman22/google-cloud-vision-php",
+    "name": "pallant/google-cloud-vision-php",
     "type": "vcs",
     "authors": [
         {
             "name": "Warat Wongmaneekit",
             "email": "canopybanj@gmail.com"
+        },
+        {
+            "name": "Joel Day",
+            "email": "joel@pallant.digital"
         }
     ],
     "autoload": {
