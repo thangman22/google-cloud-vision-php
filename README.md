@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/thangman22/google-cloud-vision-php.svg?branch=master)](https://travis-ci.org/thangman22/google-cloud-vision-php)
 # GoogleCloudVisionPHP
-This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API] (https://cloud.google.com/vision/)
+This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API](https://cloud.google.com/vision/)
 
 ## Features
 *   Support almost feature of Google Cloud Vision API (Version 1)
@@ -14,7 +14,12 @@ This project hosts the PHP library for the various RESTful based Google Cloud Vi
 *   [cURL extension](http://php.net/manual/en/book.curl.php)
 
 ## Installation
-Add this to your composer.json
+This package available on [Packagist](https://packagist.org/packages/thangman22/google-cloud-vision-php), Install the latest version with composer
+```
+composer require thangman22/google-cloud-vision-php
+```
+
+Or add this to your composer.json
 
 ```json
 "require": {
@@ -37,19 +42,21 @@ $gcv->setKey("[Key from Google]");
 **Set Image**
 
 Available image file type
-- Remote HTTP file
-- Raw Image
-- GCS
+- Remote image file (HTTP, HTTPS and Google cloud storage)
+- Local image file
 
 ```php
-// Remote file path
-$gcv->setImage("[File path]");
+// Remote HTTP image
+$gcv->setImage("https://raw.githubusercontent.com/thangman22/google-cloud-vision-php/master/examples/images/faulkner.jpg");
+
+// Google cloud storage
+$gcv->setImage("gs://BUCKET/image_path.jpg");
 
 // Local file path
-$raw_file = file_get_contents('/LOCAL/FILE/PATH');
-$gcv->setImage($raw_file, 'RAW');
+$gcv->setImage('/LOCAL/FILE/PATH.jpg');
 ```
-** Add Features **
+
+**Add Features Detections**
 ```php
 // 1 is Max result
 $gcv->addFeature("LABEL_DETECTION", 1);
@@ -66,6 +73,7 @@ $gcv->addFeatureImageProperty(1);
 //Optinal
 $gcv->setImageContext(array("languageHints"=>array("th")));
 
+// Request to API
 $response = $gcv->request();
 
 ```
