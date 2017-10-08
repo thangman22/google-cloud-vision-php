@@ -2,17 +2,18 @@
 # GoogleCloudVisionPHP
 This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API] (https://cloud.google.com/vision/)
 
-##Features
+## Features
 *   Support almost feature of Google Cloud Vision API (Version 1)
 *   Auto encode images to based64
 
-##how to get service key
+## How to get service key
 [Google Cloud Vision API Document](https://cloud.google.com/vision/docs/getting-started)
 
-##Requirements
-*   PHP >= 5.4 with cURL extension
+## Requirements
+*   PHP >= 5.4 
+*   [cURL extension](http://php.net/manual/en/book.curl.php)
 
-##Installation
+## Installation
 Add this to your composer.json
 
 ```json
@@ -21,7 +22,9 @@ Add this to your composer.json
     }
 ```
 
-##Example
+## Example
+
+Initial GoogleCloudVision
 ```php
 use GoogleCloudVisionPHP\GoogleCloudVision;
 
@@ -29,9 +32,25 @@ $gcv = new GoogleCloudVision();
 
 // Follow instruction from Google Cloud Vision Document
 $gcv->setKey("[Key from Google]");
+```
 
+**Set Image**
+
+Available image file type
+- Remote HTTP file
+- Raw Image
+- GCS
+
+```php
+// Remote file path
 $gcv->setImage("[File path]");
 
+// Local file path
+$raw_file = file_get_contents('/LOCAL/FILE/PATH');
+$gcv->setImage($raw_file, 'RAW');
+```
+** Add Features **
+```php
 // 1 is Max result
 $gcv->addFeature("LABEL_DETECTION", 1);
 
