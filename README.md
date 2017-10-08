@@ -1,19 +1,25 @@
 [![Build Status](https://travis-ci.org/thangman22/google-cloud-vision-php.svg?branch=master)](https://travis-ci.org/thangman22/google-cloud-vision-php)
 # GoogleCloudVisionPHP
-This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API] (https://cloud.google.com/vision/)
+This project hosts the PHP library for the various RESTful based Google Cloud Vision API(s) [Read about Google Cloud Vision API](https://cloud.google.com/vision/)
 
-##Features
+## Features
 *   Support almost feature of Google Cloud Vision API (Version 1)
 *   Auto encode images to based64
 
-##how to get service key
+## How to get service key
 [Google Cloud Vision API Document](https://cloud.google.com/vision/docs/getting-started)
 
-##Requirements
-*   PHP >= 5.4 with cURL extension
+## Requirements
+*   PHP >= 5.4 
+*   [cURL extension](http://php.net/manual/en/book.curl.php)
 
-##Installation
-Add this to your composer.json
+## Installation
+This package available on [Packagist](https://packagist.org/packages/thangman22/google-cloud-vision-php), Install the latest version with composer
+```
+composer require thangman22/google-cloud-vision-php
+```
+
+Or add this to your composer.json
 
 ```json
 "require": {
@@ -21,7 +27,9 @@ Add this to your composer.json
     }
 ```
 
-##Example
+## Example
+
+Initial GoogleCloudVision
 ```php
 use GoogleCloudVisionPHP\GoogleCloudVision;
 
@@ -29,9 +37,27 @@ $gcv = new GoogleCloudVision();
 
 // Follow instruction from Google Cloud Vision Document
 $gcv->setKey("[Key from Google]");
+```
 
-$gcv->setImage("[File path]");
+**Set Image**
 
+Channel to set the image.
+- Remote image file (HTTP, HTTPS and Google cloud storage)
+- Local image file
+
+```php
+// Remote HTTP image
+$gcv->setImage("https://raw.githubusercontent.com/thangman22/google-cloud-vision-php/master/examples/images/faulkner.jpg");
+
+// Google cloud storage
+$gcv->setImage("gs://BUCKET/image_path.jpg");
+
+// Local file path
+$gcv->setImage('/LOCAL/FILE/PATH.jpg');
+```
+
+**Add Features Detections**
+```php
 // 1 is Max result
 $gcv->addFeature("LABEL_DETECTION", 1);
 
@@ -47,6 +73,7 @@ $gcv->addFeatureImageProperty(1);
 //Optinal
 $gcv->setImageContext(array("languageHints"=>array("th")));
 
+// Request to API
 $response = $gcv->request();
 
 ```

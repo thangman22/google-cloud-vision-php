@@ -25,26 +25,30 @@ class GoogleCloudVisionTest extends PHPUnit_Framework_TestCase
 
     public function testConvertImgtoBased64()
     {
+        $this->filePath = './examples/images/eiffel-tower.jpg';
         $countbase64 = strlen($this->gcv->convertImgtoBased64($this->filePath));
-        $this->assertEquals($countbase64, 41722);
+        $this->assertEquals($countbase64, 367996);
     }
 
     public function testSetImageWithFile()
     {
+        $this->filePath = './examples/images/eiffel-tower.jpg';
         $request = $this->gcv->setImage($this->filePath);
         $this->assertNotNull($request['requests'][0]['image']['content']);
     }
 
     public function testSetRawImage()
     {
+        $this->filePath = './examples/images/eiffel-tower.jpg';
         $request = $this->gcv->setImage(file_get_contents($this->filePath),'RAW');
-        $this->assertEquals(41700,strlen($request['requests'][0]['image']['content']));
+        $this->assertEquals(367996,strlen($request['requests'][0]['image']['content']));
     }
 
-    public function testSetImageWithGsc()
+    public function testSetImageWithGcs()
     {
-        $request = $this->gcv->setImage($this->filePath, "GSC");
-        $this->assertNotNull($request['requests'][0]['image']['source']['gcs_image_uri']);
+        $this->filePath = 'gs://BUCKET/path_img.jpg';
+        $request = $this->gcv->setImage($this->filePath);
+        $this->assertNotNull($request['requests'][0]['image']['source']['imageUri']);
     }
 
     public function testAddType()
