@@ -65,9 +65,11 @@ class GoogleCloudVision
      */
     public function setImage($input, $type = "FILE")
     {
-        if ($type == "GSC") {
-            $this->image['source']['gcs_image_uri'] = $input;
+        if (preg_match('#^(http|https|gs)://#', $input) || $type == 'GCS') {
+            // Remote URI
+            $this->image['source']['imageUri'] = $input;
         } elseif ($type == "FILE") {
+            // Local File
             $this->image['content'] = $this->convertImgtoBased64($input);
         } elseif($type == "RAW") {
             $this->image['content'] = base64_encode($input);
@@ -82,17 +84,10 @@ class GoogleCloudVision
      */
     public function convertImgtoBased64($path)
     {
-        $urlParts = pathinfo($path);
-        $extension = $urlParts['extension'];
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $path);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $base64 = base64_encode($response);
-        return $base64;
+        if (file_exists($path) == false) {
+            return null;
+        }
+        return base64_encode(file_get_contents($path));
     }
 
     /**
