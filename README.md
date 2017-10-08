@@ -41,7 +41,7 @@ $gcv->setKey("[Key from Google]");
 
 **Set Image**
 
-Available image file type
+Channel to set the image.
 - Remote image file (HTTP, HTTPS and Google cloud storage)
 - Local image file
 
